@@ -120,3 +120,66 @@ elif role == 2:
 if access_code != "stop" and access_code != correct_code and attempts >= 3:
     print("Access blocked")
   
+
+
+""" Exercise 4: Write a program that simulates placing orders in a fast-food restaurant.
+The menu is: menu = ["pizza", "burger", "salad", "pasta"]
+Requirements:
+  - The user can place a maximum of 5 orders
+At each step:
+  - enter a product name
+  - if the user types "stop" → stop the program
+Rules:
+  - If the product is not on the menu → print "Product unavailable"
+  - If the product exists → add it to the orders list
+  - If the same product is ordered 3 times → print "Popular product!"
+At the end, print:
+  - the list of orders
+  - the total number of ordered products using len()   """
+
+menu = ["pizza", "burger", "salad", "pasta"]
+
+orders = []
+text = ""
+attempts = 0
+
+while text != "stop" and attempts < 5:
+    text = input("What would you like to order? (type stop to quit): ")
+    attempts += 1
+    text = text.lower()
+
+    if text == "stop":
+        print("Order completed")
+        break
+
+    while text not in menu and text != "stop":
+        print("Product unavailable!")
+        text = input("What would you like to order?: ")
+
+    if text in menu:
+        orders.append(text)
+        print("Product added to cart.")
+
+remove_product = input("If you want to remove a product type YES, otherwise press enter: ")
+remove_product = remove_product.lower()
+
+if remove_product == "yes":
+    while True:
+        product = input("Which product do you want to remove? ")
+
+        if product in orders:
+            orders.remove(product)
+            print(product, "was removed from the order.")
+            break
+        else:
+            print("Product does not exist in the order! Try again.")
+
+for n in menu:
+    nr = orders.count(n)
+
+    if nr >= 3:
+        print(n, "is the most popular product")
+
+print("Your order is:", orders)
+print("You ordered", len(orders), "products.")
+
