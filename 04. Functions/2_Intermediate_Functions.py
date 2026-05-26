@@ -110,7 +110,7 @@ print(find_missing_numbers(nums))
   - returns its index
   - returns -1 if no such character exists. """
 
-  s = "leetcode"
+  s = "meetmeand"
 def first_unique_char(string):
     frequency = {}
 
