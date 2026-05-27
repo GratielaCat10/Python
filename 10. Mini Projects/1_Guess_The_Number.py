@@ -1,24 +1,29 @@
-""" Generate a random number between 1 and 10.
-The user must guess the number.
+""" Generate a random number between 1 and 20.
+The user has maximum 5 attempts to guess it.
 Display:
   - "Too high"
   - "Too low"
-  - "Correct"
-The game continues until the user guesses correctly.  """
+  - "You won"
+  - "Game over".    """
 
 
 import random
 
-secret = random.randint(1, 10)
+secret = random.randint(1, 20)
 
-guess = 0
+attempts = 0
 
-while guess != secret:
+while attempts < 5:
     guess = int(input("Guess the number: "))
+    attempts += 1
 
     if guess > secret:
         print("Too high")
     elif guess < secret:
         print("Too low")
     else:
-        print("Correct")
+        print("You won")
+        break
+
+if guess != secret:
+    print("Game over")
